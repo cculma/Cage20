@@ -1,10 +1,15 @@
+library(SpATS)
+library(data.table)
 
+setwd("~/Documents/git/Roza_2021/figs/")
 
 a1 <- read.csv("~/Documents/git/Roza_2021/raw_data/Roza 2021_yield.csv")
 a1 <- a1[,-c(1,2)]
 lev2 <- c("gen","rep")
 a1[,lev2] <- lapply(a1[,lev2], factor)
 nlevels(a1$gen)
+nlevels(a1$col)
+
 a1$R <- as.factor(a1$row)
 a1$C <- as.factor(a1$col)
 nlevels(a1$C)
@@ -15,24 +20,38 @@ colnames(a1)
 lev3 <- colnames(a1)[5:14]
 
 Y1 <- list()
+H2 <- list()
 for (i in 1:length(lev3)) {
   m1 <- SpATS(response = lev3[i],
               spatial = ~PSANOVA(col, row, nseg = c(nlevels(a1$C),nlevels(a1$R)), degree = c(3,3), nest.div = 2),
               fixed = ~rep,
               random = ~ rep:C + rep:R,
-              genotype.as.random = F,
+              genotype.as.random = T,
               genotype = "gen",
               data = a1,
               control = list(tolerance = 1e-03))
   
-  pred4 <- predict.SpATS(m1, which = "gen", predFixed = "marginal")
-  pred4 <- pred4[,c(1,7,8)]
-  pred4$weight <- (1/pred4$standard.errors)^2
-  Y1[[length(Y1)+1]] <- pred4
+  h2 <- getHeritability(m1)
+  h2 <- as.data.frame(h2)
+  H2[[length(H2)+1]] <- h2
+  
+  # pred4 <- predict.SpATS(m1, which = "gen", predFixed = "marginal")
+  # pred4 <- pred4[,c(1,7,8)]
+  # pred4$weight <- (1/pred4$standard.errors)^2
+  # Y1[[length(Y1)+1]] <- pred4
+  # 
 }
 names(Y1) <- lev3
+names(H2) <- lev3
+
 
 Y2 <-rbindlist(Y1, use.names=TRUE, fill=TRUE, idcol="env")
+H2 <-rbindlist(H2, use.names=TRUE, fill=TRUE, idcol="env")
+
+write.csv(H2, "H2.csv", row.names = F, quote = F)
+
+plot(m1)
+m1
 
 head(Y2)
 Y2$env <- as.factor(Y2$env)
