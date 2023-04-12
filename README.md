@@ -25,3 +25,4 @@ Table for biomass yield harvests:
 |          | -      | -     | Total |           | -        | -           |
 
 Data analysis can be done using two stage analysis or using random regression. Both can be done in ASReml.
+Add heritability, and the way to calculate it. Couble check if the harvest during the first year is useful.
