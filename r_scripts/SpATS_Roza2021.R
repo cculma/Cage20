@@ -1,4 +1,4 @@
-library(SpATS)
+# library(SpATS)
 library(data.table)
 
 setwd("~/Documents/git/Roza_2021/figs/")
