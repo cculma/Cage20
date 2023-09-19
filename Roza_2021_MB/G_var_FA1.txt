@@ -1,0 +1,10 @@
+ 	Genotypic Variance
+aug_22	0.09
+aug_23	0.03
+jul_22	0.25
+jul_23	0.01
+jun_23	0.05
+may_22	0.42
+may_23	0.14
+sep_21	0.01
+sep_22	0.06
