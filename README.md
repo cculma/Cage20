@@ -1,8 +1,8 @@
-# Roza_2021
-Roza 2021 also known as Cage20. 
-This is an alfalfa population of 600 individuals planted in Roza field (Prosser, WA) to dientify markers associated with drought stress. ~550 genotypes (individuals) were genotyped using DArT.
-550 genotypes were genotyped on May 2022. The rest of 50 genotypes were genotyped on September 2022
-PCA analysis was done in this population finging an population structure in 14 clusters.
+# Cage20
+Cage20 is a population of 600 accessions established in Roza field in 2021. 
+This is an alfalfa population of 600 accessions planted in Roza field (Prosser, WA) in 2021 to identify markers associated with drought stress and genomic selection. ~550 genotypes (individuals) were initially genotyped using DArT (DAl22-7011).
+550 genotypes were genotyped in May 2022. The rest of the 50 genotypes were genotyped in September 2022. Data of 50 genotypes are in project: DAl22-7535.
+PCA analysis was done in this population finding a population structure in 14 clusters.
 
 Table for biomass yield harvests:
 
@@ -24,5 +24,5 @@ Table for biomass yield harvests:
 |          | -      | Sep   | Sep   | ST2_sep   | -        | -           |
 |          | -      | -     | Total |           | -        | -           |
 
-Data analysis can be done using two stage analysis or using random regression. Both can be done in ASReml.
-Add heritability, and the way to calculate it. Couble check if the harvest during the first year is useful.
+Data analysis can be done using two-stage analysis or using random regression. Both can be done in ASReml.
+Add heritability and the way to calculate it. Double check if the harvest during the first year is useful.
